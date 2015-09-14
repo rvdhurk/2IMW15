@@ -1,7 +1,7 @@
 import math
 from textblob import TextBlob as tb
 
-__author__ = 'Roy van den Hurk'
+__author__ = 'Roy van den Hurk, Johan Munneke'
 
 
 class FeatureExtractor:
