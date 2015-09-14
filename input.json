@@ -1,0 +1,8 @@
+{
+  "article_text" : "text + html tags to differentiate between titles, subtitles and normal text",
+  "article_title" : "title as string",
+  "author" : "author as string",
+  "publisher" : "publisher as string",
+  "publication_date" : "date",
+  "id" : "article id"
+}

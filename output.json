@@ -1,0 +1,23 @@
+{
+  "id": "article id",
+  "features": {
+    "author": "author as string",
+    "publisher": "publisher as string",
+    "publication_date": "date",
+    "article_length": "integer",
+    "article_sentiment": "float",
+    "article_words": [
+      {
+        "word": "word as string",
+        "tf-idf": "float"
+      }
+    ],
+    //Words in title may have a heigher weight so allow ML to weight them differently
+    "title_words": [
+      {
+        "word": "word as string",
+        "tf-idf": "float"
+      }
+    ]
+  }
+}
