@@ -21,9 +21,11 @@ class FeatureExtractor:
 
     def get_features(self, article):
         features = Features()
-        # features.article = article
-        # features.author = article.author
-        # features.date = article.date
+        features.author = article.author
+        features.date = article.date
+        features.title = article.title
+        features.length = len(self.clean_html(article.html).split())
+        features.publisher = article.publisher
         features.tf_idf = {}
         blob = TextBlob(self.clean_html(article.html))
         for word in blob.words:
@@ -43,15 +45,18 @@ class FeatureExtractor:
         return sum(1 for blob in bloblist if word in blob)
 
     def clean_html(self, html):
+        et = ElementTree.fromstring(html)
+        print et.find('.//h1')
         return ''.join(ElementTree.fromstring(html).itertext())
 
 
 class Article:
     def __init__(self):
-        self.html = ''
-        self.author = ''
-        self.date = datetime.datetime(1, 1, 1)
-        self.title = ''
+        self.html = None
+        self.author = None
+        self.date = None
+        self.title = None
+        self.publisher = None
 
     def from_sql(self, index):
         # TODO: query database
@@ -61,4 +66,9 @@ class Article:
 class Features:
     def __init__(self):
         self.tf_idf = None
+        self.author = None
+        self.date = None
+        self.title = None
+        self.length = None
+        self.publisher = None
         pass
