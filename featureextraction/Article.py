@@ -2,7 +2,7 @@ __author__ = 'Roy van den Hurk, Johan Munneke'
 
 import sqlite3
 
-from  bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 from textblob import TextBlob
 
