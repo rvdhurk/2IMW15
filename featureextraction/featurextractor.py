@@ -33,6 +33,7 @@ class FeatureExtractor:
         features.companies = article.companies
         features.tf = article.tf()
         features.tf_idf = self.tf_idf(article)
+        features.sentiment = article.textBlob.sentiment
         return features
 
     def tf_idf(self, article):
@@ -54,3 +55,4 @@ class Features:
         self.publisher = None
         self.companies = None
         self.tf = None
+        self.sentiment = None

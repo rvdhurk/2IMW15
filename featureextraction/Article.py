@@ -33,7 +33,7 @@ class Article:
     def from_sql():
         conn = sqlite3.connect(DATABASE_URL)
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM article WHERE isEconomic=1 AND date!="None" LIMIT 1')
+        cursor.execute('SELECT * FROM article WHERE isEconomic=1 AND date!="None" LIMIT 10')
         rows = cursor.fetchall()
         articles = []
         for row in rows:
