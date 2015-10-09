@@ -10,7 +10,7 @@ from Config import *
 
 
 class Article:
-    def __init__(self, index, publisher, title, date, author, text, companies):
+    def __init__(self, index, publisher, title, date, author, text, companies, label):
         self.textBlob = TextBlob(self.clean_html(text))
         self.title = title
         self.author = author
@@ -19,6 +19,7 @@ class Article:
         self.index = index
         self.companies = companies
         self.tf_cache = None
+        self.label = label
 
     def tf(self):
         if self.tf_cache:
