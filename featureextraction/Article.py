@@ -34,11 +34,11 @@ class Article:
     def from_sql():
         conn = sqlite3.connect(DATABASE_URL)
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM article WHERE isEconomic=1 AND date!="None" LIMIT 10')
+        cursor.execute('SELECT * FROM article WHERE isEconomic=1 AND date!="None" LIMIT 100')
         rows = cursor.fetchall()
         articles = []
         for row in rows:
-            article = Article(row[0], row[1], row[3], row[4], row[5], row[6], row[8])
+            article = Article(row[0], row[1], row[3], row[4], row[5], row[6], row[8],row[2])
             articles.append(article)
         conn.close()
         return articles

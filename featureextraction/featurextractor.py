@@ -34,6 +34,7 @@ class FeatureExtractor:
         features.tf = article.tf()
         features.tf_idf = self.tf_idf(article)
         features.sentiment = article.textBlob.sentiment
+        features.text = article.textBlob
         return features
 
     def tf_idf(self, article):
