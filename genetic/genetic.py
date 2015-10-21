@@ -1,4 +1,4 @@
-__author__ = 'Roy van den Hurk'
+__author__ = 'Roy van den Hurk, Johan Munneke'
 
 from random import *
 
@@ -131,7 +131,7 @@ class Genetic:
            raise Exception('Need at least 2 top parents, try a bigger population size or retain percentage!')
         print 'evolving ', iterations, ' iterations'
         done = 0 
-        mod = iterations/ 10
+        mod = iterations/ 4
         if mod == 0:
             mod = 1
         for x in xrange(iterations):

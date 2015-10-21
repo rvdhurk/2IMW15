@@ -56,25 +56,28 @@ def getTfIdf(articles, features):
     return s
 
 
-def getTf(articles, features):
-    contains = False
-    for word in features.text.words:
-        if word in words:
-            contains = True
-    if not contains:
-        print features.text
-    s = sum(words[word] for word in features.text if word in words) / len(features.text.words)
-    return s
+
+# def getTf(articles, features):
+#     contains = False
+#     for word in features.text.words:
+#         if word in words:
+#             contains = True
+#     if not contains:
+#         print features.text
+#     s = sum(words[word] for word in features.text if word in words) / len(features.text.words)
+#     return s
 
 
 def fitness(articles, weigths):
-    p = {0: getAuthorValue, 1: getSentiment, 2: getPublisher, 3: getArticleLength, 4: getTitle, 5: getTfIdf, 6: getTf}
+    p = [getAuthorValue, getSentiment, getPublisher, getArticleLength, getTitle, getTfIdf]
     correct = 0
     wrong = 0
     for article in articles:
         sum = 0
-        for i in range(0, len(weigths)):
+        for i in range(0, 6):
             sum += weigths[i] * p[i](articles, article.features)
+        for word in range(0,len(words)):
+            sum += weigths[i+6] * words[words.keys()[word]] * article.textBlob.word_counts[words.keys()[word]] / article.features.length
         if article.label == 0:
             if -0.1 <= sum <= 0.1:
                 correct += 1
@@ -141,39 +144,35 @@ if __name__ == '__main__':
 
     articles = []
     articles = Article.from_sql()
-    # featureExtractor = FeatureExtractor()
-    # featureExtractor.set_training_data(articles)
-    # random.seed(1)
-    # for article in articles:
-    #     features = featureExtractor.get_features(article)
-    #     article.features = features
-    #     article.label = -1 if random.random() > 0.5 else 1
-    # p = population(100, 7, 0, 100000)
-    # progress = 0
-    # for x in xrange(1):
-    #     progress += 1
-    #     print progress
-    #     p = evolve(articles, p)
-    #     # print population(10, len(features), WEIGHT_MIN, WEIGHT_MAX)
-    #     # Test value extraction
-    #     # print Features.getAuthorValue('dd')
-    #     # test
-    # sortedList = [(fitness(articles, x), x) for x in p]
-    # sortedList = [x[1] for x in sorted(sortedList, reverse=True)]
-    # print 'done'
-    # print sortedList[0]
-    #
-    # t = ['economy']
-    # s = sum(words[word] for word in t if word in words) / len(t)
-    # print s
-
-    from textblob.classifiers import NaiveBayesClassifier
-
-    train = []
+    featureExtractor = FeatureExtractor()
+    featureExtractor.set_training_data(articles)
+    random.seed(1)
     for article in articles:
-        for sentence in article.textBlob.sentences:
-            train.append({"text": sentence, "label": "pos"})
-    print len(train)
-    cl = NaiveBayesClassifier(train)
-    cl.classify("test string test stestasjajsjdj a hahsd ")
+        features = featureExtractor.get_features(article)
+        article.features = features
+        article.label = -1 if random.random() > 0.5 else 1
+    p = population(100, 6 + len(words), 0, 100000)
+    progress = 0
+    for x in xrange(15):
+        progress += 1
+        print progress
+        p = evolve(articles, p)
+        # print population(10, len(features), WEIGHT_MIN, WEIGHT_MAX)
+        # Test value extraction
+        # print Features.getAuthorValue('dd')
+        # test
+    sortedList = [(fitness(articles, x), x) for x in p]
+    sortedList = [x[1] for x in sorted(sortedList, reverse=True)]
     print 'done'
+    print sortedList[0]
+
+    # from textblob.classifiers import NaiveBayesClassifier
+    #
+    # train = []
+    # for article in articles:
+    #     for sentence in article.textBlob.sentences:
+    #         train.append({"text": sentence, "label": "pos"})
+    # print len(train)
+    # cl = NaiveBayesClassifier(train)
+    # cl.classify("test string test stestasjajsjdj a hahsd ")
+    # print 'done'

@@ -1,0 +1,66 @@
+#train= 800 #test= 200 #words= 2912
+10
+50
+100
+250done
+
+Starting run  1
+evolving  1  iterations
+Progress:  1 / 1
+Starting run  1
+evolving  1  iterations
+Starting run  1
+Starting run  2
+evolving  10  iterations
+Progress:  1 / 10
+Progress:  2 / 10
+evolving  1  iterations
+Progress:  3 / 10
+Progress:  4 / 10
+Progress:  1 / 1
+Starting run  1
+Progress:  5 / 10
+Progress:  6 / 10
+Progress:  7 / 10
+Progress:  8 / 10
+Progress:  9 / 10
+Progress:  10 / 10
+Starting run  3
+evolving  50  iterations
+Progress:  1 / 1
+Starting run  2
+evolving  1  iterations
+evolving  10  iterations
+Progress:  5 / 50
+Progress:  1 / 10
+Progress:  10 / 50
+Progress:  2 / 10
+Progress:  15 / 50
+Starting run  2
+Progress:  3 / 10
+Progress:  20 / 50
+evolving  10  iterations
+Progress:  4 / 10
+Progress:  25 / 50
+Progress:  1 / 1
+Progress:  5 / 10
+Progress:  30 / 50
+Progress:  1 / 10
+Progress:  6 / 10
+Progress:  35 / 50
+Progress:  7 / 10
+Progress:  40 / 50
+Progress:  2 / 10
+Progress:  8 / 10
+Progress:  45 / 50
+Progress:  9 / 10
+Progress:  50 / 50
+Progress:  3 / 10
+Starting run  4
+evolving  100  iterations
+Progress:  10 / 10
+Progress:  4 / 10
+Starting run  3
+Progress:  10 / 100
+evolving  50  iterations
+Starting run  2

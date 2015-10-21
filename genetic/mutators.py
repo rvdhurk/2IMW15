@@ -33,10 +33,25 @@ Mutator that breeds by combining the first (randomly choosen) part of the male w
 '''
 class SinglePointMutator(Mutator):
     def mutate(self, male, female):
-        point = randint(len(male) - 1)
+        point = randint(0, len(male) - 1)
         return male[:point] + female[point:]
 
+class WeightedAverageMutator(Mutator):
+    def __init__(self, weight):
+        self.weight = weight
+        
+    def mutate(self, male, female):
+        child = []
+        for i in range(0, len(male)):
+            child.append(self.weight * male[i] + (1 - self.weight) * female[i])
+        return child
 
+class RandomMutator(Mutator):
+    def mutate(self, male, female):
+        child = []
+        for i in range(0, len(male)):
+            child.append(male[i] if random() > 0.5 else female[i])
+        return child
 '''
 TODO:
     Two Points -> Take random section from male, take rest from female

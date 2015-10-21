@@ -19,6 +19,7 @@ class NullLemmatizer():
 def tokenize(text, tokenizer=NullTokenizer(), stemmer=NullStemmer(), lemmatizer=NullLemmatizer(), removeStopWords=True):
     text = text.lower()
     tokens = tokenizer.tokenize(text)
+    #TODO: check unicode warning
     tokens = [i for i in tokens if i not in stopwords.words('english')] if removeStopWords else tokens
     tokens = [stemmer.stem(i) for i in tokens]
     tokens = [lemmatizer.lemmatize(i) for i in tokens]
